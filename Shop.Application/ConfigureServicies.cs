@@ -1,4 +1,7 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using FluentValidation;
+using MediatR;
+using Microsoft.Extensions.DependencyInjection;
+using Shop.Application.Common.Behaviours;
 using Shop.Application.Common.Mappings;
 using System.Reflection;
 
@@ -9,8 +12,12 @@ public static class ConfigureServicies
     {
         services.AddAutoMapper(typeof(MappingProfile));
 
-        services.AddMediatR(ctg => 
-            ctg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
+        services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+
+        services.AddMediatR(ctg => {
+            ctg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
+            ctg.AddBehavior(typeof(IPipelineBehavior<,>), typeof(ValidationPipelineBehaviour<,>));
+        });
 
         return services;
     }

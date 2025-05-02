@@ -21,7 +21,7 @@ public class CategoryController : ApiControllerBase
     [HttpGet("{id}")]
     public async Task<IActionResult> GetById(int id)
     {
-        var category = await Mediator.Send(new GetCategoryByIdQuery { Id = id });
+        var category = await Mediator.Send(new GetCategoryByIdQuery(id));
 
         if (category == null)
         {
@@ -54,7 +54,7 @@ public class CategoryController : ApiControllerBase
     [HttpDelete("{id}")]
     public async Task<IActionResult> Delete(int id)
     {       
-        await Mediator.Send(new DeleteCategoryCommand { Id = id});
+        await Mediator.Send(new DeleteCategoryCommand(id));
 
         return NoContent();
     }

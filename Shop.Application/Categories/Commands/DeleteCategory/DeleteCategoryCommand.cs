@@ -1,7 +1,4 @@
 ﻿using MediatR;
 
 namespace Shop.Application.Categories.Commands.DeleteCategory;
-public class DeleteCategoryCommand: IRequest<int>
-{
-    public int Id { get; set; }
-}
+public sealed record DeleteCategoryCommand(int Id) : IRequest<int>;
