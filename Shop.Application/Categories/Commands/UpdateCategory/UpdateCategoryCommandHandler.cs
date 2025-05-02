@@ -1,10 +1,9 @@
-﻿using AutoMapper;
-using MediatR;
+﻿using MediatR;
 using Shop.Domain.Contracts;
 using Shop.Domain.Entities;
 
 namespace Shop.Application.Categories.Commands.UpdateCategory;
-public class UpdateCategoryCommandHandler(ICategoryRepository repository, IMapper mapper)
+public class UpdateCategoryCommandHandler(ICategoryRepository repository)
     : IRequestHandler<UpdateCategoryCommand, int>
 {
     public async Task<int> Handle(UpdateCategoryCommand request, CancellationToken cancellationToken)
