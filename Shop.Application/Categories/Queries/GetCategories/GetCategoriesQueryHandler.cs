@@ -7,10 +7,13 @@ namespace Shop.Application.Categories.Queries.GetCategories;
 public class GetCategoriesQueryHandler(ICategoryRepository repository, IMapper mapper)
     : IRequestHandler<GetCategoriesQuery, List<CategoryVm>>
 {
+    private readonly ICategoryRepository _repository = repository;
+    private readonly IMapper _mapper = mapper;
+
     public async Task<List<CategoryVm>> Handle(GetCategoriesQuery request, CancellationToken cancellationToken)
     {
-        var categories = await repository.GetAllAsync();
+        var categories = await _repository.GetAllAsync();
 
-        return mapper.Map<List<CategoryVm>>(categories);
+        return _mapper.Map<List<CategoryVm>>(categories);
     }
 }

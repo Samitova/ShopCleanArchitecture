@@ -7,13 +7,13 @@ namespace Shop.Application.Categories.Queries.GetCategoryById;
 public class GetCategoryByIdQueryHandler(ICategoryRepository repository, IMapper mapper) 
     : IRequestHandler<GetCategoryByIdQuery, CategoryVm>
 {
+    private readonly ICategoryRepository _repository = repository;
+    private readonly IMapper _mapper = mapper;
+
     public async Task<CategoryVm> Handle(GetCategoryByIdQuery request, CancellationToken cancellationToken)
     {
-        var category = await repository.GetByIdAsync(request.Id);
+        var category = await _repository.GetByIdAsync(request.Id);
 
-        if (category == null)
-            throw new NullReferenceException();
-
-        return mapper.Map<CategoryVm>(category);
+        return _mapper.Map<CategoryVm>(category);
     }
 }

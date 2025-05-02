@@ -8,16 +8,18 @@ namespace Shop.Application.Categories.Commands.CreateCategory;
 public class CreateCategoryCommandHandler(ICategoryRepository repository, IMapper mapper)
     : IRequestHandler<CreateCategoryCommand, CategoryVm>
 {
+    private readonly ICategoryRepository _repository = repository;
+    private readonly IMapper _mapper = mapper;
+
     public async Task<CategoryVm> Handle(CreateCategoryCommand request, CancellationToken cancellationToken)
     {
         var category = new Category
         {
             Name = request.CategoryName,
-            Description = request.Description,
-            Products = request.Products
+            Description = request.Description
         };
 
-        await repository.CreateAsync(category);
-        return mapper.Map<CategoryVm>(category);
+        await _repository.CreateAsync(category);
+        return _mapper.Map<CategoryVm>(category);
     }
 }
