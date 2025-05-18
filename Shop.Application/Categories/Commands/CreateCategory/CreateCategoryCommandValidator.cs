@@ -10,6 +10,6 @@ public class CreateCategoryCommandValidator:AbstractValidator<CreateCategoryComm
             .MaximumLength(200).WithMessage("Name must not exceed 200 characters");
 
         RuleFor(v => v.Description)
-            .NotEmpty().WithMessage("Name field is required");
+            .NotEmpty().WithMessage("Description field is required");
     }
 }

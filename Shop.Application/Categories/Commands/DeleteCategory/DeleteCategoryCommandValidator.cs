@@ -9,7 +9,9 @@ public class DeleteCategoryCommandValidator : AbstractValidator<DeleteCategoryCo
     {
         _repository = repository;
 
-        RuleFor(ws => ws).MustAsync((x, cancellation) => EntityExists(x.Id)).WithMessage("Category was not found.");
+        RuleFor(ws => ws)
+            .MustAsync((x, cancellation) => EntityExists(x.Id))
+            .WithMessage("Category was not found.");
     }
 
     private async Task<bool> EntityExists(int id)

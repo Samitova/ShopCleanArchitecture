@@ -16,7 +16,8 @@ public static class ConfigureServicies
         services.AddDbContext<ShopDbContext>(options => options.UseSqlServer(connectionString));
 
         services.AddScoped<IShopSeeder, ShopSeeder>();
-        services.AddTransient<ICategoryRepository, CategoryRepository>();
+        services.AddScoped<ICategoryRepository, CategoryRepository>();
+        services.AddScoped<IProductRepository, ProductRepository>();
 
         return services;
     }
