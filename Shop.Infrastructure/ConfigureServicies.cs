@@ -18,6 +18,7 @@ public static class ConfigureServicies
         services.AddScoped<IShopSeeder, ShopSeeder>();
         services.AddScoped<ICategoryRepository, CategoryRepository>();
         services.AddScoped<IProductRepository, ProductRepository>();
+        services.AddScoped<IOrderRepository, OrderRepository>();
 
         return services;
     }

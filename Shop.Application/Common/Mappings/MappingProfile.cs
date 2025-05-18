@@ -19,5 +19,11 @@ public class MappingProfile:Profile
 
         CreateMap<CreateProductCommand, Product>();
         CreateMap<UpdateProductCommand, Product>();
+
+        CreateMap<OrderVm, Order>();
+        CreateMap<Order, OrderVm>();
+
+        CreateMap<OrderItemVm, OrderItem>();
+        CreateMap<OrderItem, OrderItemVm>();
     }
 }
