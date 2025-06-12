@@ -10,8 +10,5 @@ public class OrderVm
     public Address ShippingAddress { get; set; }
     public OrderStatus OrderStatus { get; set; }
     public int CustomerId { get; set; }
-
-    //public ICollection<int> OrderItemsIds { get; set; }
-
     public virtual ICollection<OrderItemVm> OrderItems { get; set; }
 }

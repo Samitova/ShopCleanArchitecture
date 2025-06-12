@@ -24,6 +24,9 @@ public class MappingProfile:Profile
         CreateMap<Order, OrderVm>();
 
         CreateMap<OrderItemVm, OrderItem>();
-        CreateMap<OrderItem, OrderItemVm>();
+        CreateMap<OrderItem, OrderItemVm>();        
+
+        CreateMap<CustomerVm, Customer>();
+        CreateMap<Customer, CustomerVm>();
     }
 }
