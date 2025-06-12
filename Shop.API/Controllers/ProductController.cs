@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Shop.Application.Entities;
 using Shop.Application.Products.Commands.CreateProduct;
 using Shop.Application.Products.Commands.DeleteProduct;
 using Shop.Application.Products.Commands.UpdateProduct;
@@ -20,7 +21,8 @@ public class ProductController : ApiControllerBase
     }
 
     [HttpGet("{id}")]
-    public async Task<IActionResult> GetById(int id)
+    [ProducesResponseType(typeof(ProductVm), StatusCodes.Status200OK)]
+    public async Task<ActionResult<ProductVm>> GetById(int id)
     {
         var product = await Mediator.Send(new GetProductByIdQuery(id));
 
@@ -40,7 +42,7 @@ public class ProductController : ApiControllerBase
         return CreatedAtAction(nameof(GetById), new { id = product.Id}, product);
     }
 
-    [HttpPut("{id}")]
+    [HttpPut("{id}")]  
     public async Task<IActionResult> Update(int id, UpdateProductCommand command)
     {
         if (id != command.Id)

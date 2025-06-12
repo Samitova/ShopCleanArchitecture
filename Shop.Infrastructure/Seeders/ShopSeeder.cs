@@ -30,29 +30,20 @@ internal class ShopSeeder(ShopDbContext dbContext) : IShopSeeder
         return new List<Customer> {
            new Customer {
                FirstName="Anna",
-               SecondName="Doe",
-               Address=new(){
-                    City="Prague",
-                    Street = "Bellas str 56",
-                    PostalCode="12344"},
+               LastName="Doe",
+               Address="Prague, Bellas str 56, 12344",
                Email="doe@bg.cz",
                Phone = "21155555515"},
            new Customer {
                FirstName="Ben",
-               SecondName="Fraus",
-               Address=new(){
-                    City="Brno",
-                    Street = "Galana str 16",
-                    PostalCode="14200"},
+               LastName="Fraus",
+               Address="Brno, Galana str 16, 14200",
                Email="fraus@bg.cz",
                Phone = "5333333333"},
             new Customer {
                FirstName="Sally",
-               SecondName="Kop",
-               Address=new(){
-                    City="Brno",
-                    Street = "Malaska 26",
-                    PostalCode="14600"},
+               LastName="Kop",
+               Address="Brno, Malaska 26, 14600",
                Email="ms@bg.cz",
                Phone = "23555235"}
         };

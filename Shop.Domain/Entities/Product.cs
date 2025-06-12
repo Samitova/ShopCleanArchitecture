@@ -16,8 +16,5 @@ namespace Shop.Domain.Entities
 
         [JsonIgnore]
         public virtual ICollection<OrderItem> OrderItems { get; set; }
-
-        [JsonIgnore]
-        public virtual ICollection<Order> Orders { get; set; }
     }
 }

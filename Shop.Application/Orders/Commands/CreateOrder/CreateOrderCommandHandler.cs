@@ -18,7 +18,6 @@ public class CreateOrderCommandHandler(IOrderRepository repository, IMapper mapp
             CreatedAt = DateTime.UtcNow,
             CustomerId = request.CustomerId,
             OrderStatus = OrderStatus.Created,
-            ShippedAt = request.ShippedAt,  
             ShippingAddress = request.ShippingAddress,
             OrderItems =_mapper.Map<ICollection<OrderItem>>(request.OrderItems)
         };

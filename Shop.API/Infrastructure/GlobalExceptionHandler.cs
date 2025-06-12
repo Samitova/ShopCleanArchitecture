@@ -23,7 +23,7 @@ public class GlobalExceptionHandler: IExceptionHandler
             {
                 Title = "Server Error",
                 Status = StatusCodes.Status500InternalServerError
-            };
+            };           
 
             httpContext.Response.StatusCode = StatusCodes.Status500InternalServerError;
 

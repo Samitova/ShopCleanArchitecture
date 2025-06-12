@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Shop.Domain.Contracts;
 using Shop.Infrastructure.Persistence;
 using Shop.Infrastructure.Repositories;
@@ -13,7 +14,10 @@ public static class ConfigureServicies
     {
         var connectionString = configuration.GetConnectionString("ShopDbConnectionString") ??
             throw new InvalidOperationException("Connection string ShopDbConnectionString was not found");
-        services.AddDbContext<ShopDbContext>(options => options.UseSqlServer(connectionString));
+
+        services.AddDbContext<ShopDbContext>(options => options.UseSqlServer(connectionString)
+            .LogTo(Console.WriteLine, LogLevel.Information)
+            .EnableSensitiveDataLogging());
 
         services.AddScoped<IShopSeeder, ShopSeeder>();
         services.AddScoped<ICategoryRepository, CategoryRepository>();

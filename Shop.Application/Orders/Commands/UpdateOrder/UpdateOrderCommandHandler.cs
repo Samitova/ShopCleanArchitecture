@@ -16,12 +16,9 @@ public class UpdateOrderCommandHandler(IOrderRepository repository, IMapper mapp
         {
             Id = request.Id,
             CustomerId = request.CustomerId,
-            //I don`t want to allow changing it
-            CreatedAt = request.CreatedAt,
             ShippedAt = request.ShippedAt,
             ShippingAddress = request.ShippingAddress,
-            OrderStatus = request.OrderStatus,
-            OrderItems = _mapper.Map<ICollection<OrderItem>>(request.OrderItems)
+            OrderStatus = request.OrderStatus
         };
 
         var result = await _repository.UpdateAsync(request.Id, order);

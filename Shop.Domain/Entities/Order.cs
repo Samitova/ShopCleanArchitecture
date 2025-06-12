@@ -6,8 +6,8 @@ namespace Shop.Domain.Entities
     {       
         public int Id { get; set; }
         public DateTime CreatedAt { get; set; }
-        public DateTime ShippedAt { get; set; }
-        public Address ShippingAddress { get; set; }
+        public DateTime? ShippedAt { get; set; }
+        public string ShippingAddress { get; set; }
         public OrderStatus OrderStatus { get; set; }   
         
         public int CustomerId { get; set; }
@@ -15,8 +15,5 @@ namespace Shop.Domain.Entities
 
         [JsonIgnore]
         public virtual ICollection<OrderItem> OrderItems { get; set; }
-
-        [JsonIgnore]
-        public virtual ICollection<Product> Products { get; set; }
     }
 }
