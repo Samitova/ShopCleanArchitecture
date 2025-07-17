@@ -2,6 +2,7 @@
 using MediatR;
 using Shop.Application.Entities;
 using Shop.Domain.Contracts;
+using Shop.Domain.Entities;
 
 namespace Shop.Application.Orders.Queries.GetOrders;
 public class GetOrdersQuueryHandler(IOrderRepository repository, IMapper mapper)
