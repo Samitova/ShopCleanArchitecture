@@ -1,4 +1,5 @@
-﻿using Shop.Domain.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using Shop.Domain.Entities;
 using Shop.Infrastructure.Persistence;
 
 namespace Shop.Infrastructure.Seeders;
@@ -6,6 +7,7 @@ internal class ShopSeeder(ShopDbContext dbContext) : IShopSeeder
 {
     public async Task Seed()
     {
+        dbContext.Database.Migrate();
         if (await dbContext.Database.CanConnectAsync())
         {
             if (!dbContext.Customers.Any())
