@@ -2,8 +2,14 @@ using Shop.API.Infrastructure;
 using Shop.Application;
 using Shop.Infrastructure;
 using Shop.Infrastructure.Seeders;
+using Azure.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
+
+//var keyVaultEndpoint = new Uri(Environment.GetEnvironmentVariable("VaultUri")!);
+
+var keyVaultEndpoint = new Uri(builder.Configuration.GetSection("KeyVaultURL").Value!);
+builder.Configuration.AddAzureKeyVault(keyVaultEndpoint, new DefaultAzureCredential());
 
 // Add services to the container.
 
