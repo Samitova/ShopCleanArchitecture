@@ -2,7 +2,6 @@ using Shop.API.Infrastructure;
 using Shop.Application;
 using Shop.Infrastructure;
 using Shop.Infrastructure.Seeders;
-using Azure.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -35,11 +34,14 @@ using (var scope = app.Services.CreateScope())
 }
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+//if (app.Environment.IsDevelopment())
+//{
+//    app.UseSwagger();
+//    app.UseSwaggerUI();
+//}
+
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
 
