@@ -6,7 +6,7 @@ name: testshop-api Build and deploy
 on:
   push:
     branches:
-      - release/ShopAPI/*
+      - master
   workflow_dispatch:
 
 jobs:
@@ -67,4 +67,5 @@ jobs:
           package: .
 
           
+
 
