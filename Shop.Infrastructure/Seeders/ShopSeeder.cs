@@ -7,7 +7,6 @@ internal class ShopSeeder(ShopDbContext dbContext) : IShopSeeder
 {
     public async Task Seed()
     {
-        dbContext.Database.Migrate();
         if (await dbContext.Database.CanConnectAsync())
         {
             if (!dbContext.Customers.Any())
