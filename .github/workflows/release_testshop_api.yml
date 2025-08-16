@@ -1,12 +1,12 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: testshop-api Build and deploy
+name: Build and deploy testshop-api
 
 on:
   push:
     branches:
-      - master
+      - release/ShopApi/*
   workflow_dispatch:
 
 jobs:
@@ -67,5 +67,6 @@ jobs:
           package: .
 
           
+
 
 
