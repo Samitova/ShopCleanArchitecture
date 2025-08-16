@@ -6,7 +6,7 @@ name: Build and deploy testshop-api
 on:
   push:
     branches:
-      - release/ShopApi/*
+      - release/ShopApi
   workflow_dispatch:
 
 jobs:
@@ -54,9 +54,9 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_069388D4D5774A04A241766CD9CF6EC3 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_DAE65FCE689545E4BEA0CD8312E67826 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_A959BABE275C4C2F97C854EE28D8A813 }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_65C9A2CC9F5B455687EF4C1D121B5279 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_4AE3A30302034E39909A7F84EC10B60C }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_6BC8B9268C1548D1B45721AE52F61F7F }}
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
@@ -67,6 +67,3 @@ jobs:
           package: .
 
           
-
-
-
