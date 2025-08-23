@@ -1,21 +1,24 @@
+using Azure.Identity;
+using Azure.Security.KeyVault.Secrets;
 using Shop.API.Infrastructure;
 using Shop.Application;
 using Shop.Infrastructure;
 using Shop.Infrastructure.Seeders;
+using System;
 
 var builder = WebApplication.CreateBuilder(args);
 
-//var keyVaultEndpoint = new Uri(Environment.GetEnvironmentVariable("VaultUri")!);
-
-//var keyVaultEndpoint = new Uri(builder.Configuration.GetSection("KeyVaultURL").Value!);
-//builder.Configuration.AddAzureKeyVault(keyVaultEndpoint, new DefaultAzureCredential());
+var keyVaultUrl = builder.Configuration["KeyVaultURL"];
+if (!string.IsNullOrEmpty(keyVaultUrl))
+{
+    var keyVaultEndpoint = new Uri(keyVaultUrl);
+    builder.Configuration.AddAzureKeyVault(keyVaultEndpoint, new DefaultAzureCredential());
+}
 
 // Add services to the container.
-
 builder.Services.AddControllers();
-
-builder.Services.AddInfrastructureServices(builder.Configuration);
 builder.Services.AddApplicationServices();
+builder.Services.AddInfrastructureServices(builder.Configuration["ShopDbConnectionString"]);
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
