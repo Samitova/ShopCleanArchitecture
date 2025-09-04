@@ -10,9 +10,9 @@ using Shop.Infrastructure.Seeders;
 namespace Shop.Infrastructure;
 public static class ConfigureServicies
 {
-    public static IServiceCollection AddInfrastructureServices(this IServiceCollection services, IConfiguration configuration)
+    public static IServiceCollection AddInfrastructureServices(this IServiceCollection services, string connectionString)
     {
-        var connectionString = configuration.GetConnectionString("ShopDbConnectionString") ??
+        if (string.IsNullOrWhiteSpace(connectionString))
             throw new InvalidOperationException("Connection string ShopDbConnectionString was not found");
 
         services.AddDbContext<ShopDbContext>(options => options.UseSqlServer(connectionString)
